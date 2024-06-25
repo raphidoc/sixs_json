@@ -1,0 +1,1 @@
+/usr/bin/make -f /home/raphael/PycharmProjects/6S_json/6sV2.1/Makefile -C /home/raphael/PycharmProjects/6S_json/6sV2.1 sixs
