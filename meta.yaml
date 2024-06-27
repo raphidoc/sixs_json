@@ -1,0 +1,24 @@
+package:
+  name: sixs_json
+  version: 0.1.4.1
+
+source:
+  path: .
+
+requirements:
+  build:
+    - {{ compiler('fortran') }}
+    - python
+    - setuptools
+    - wheel
+  run:
+    - python
+
+about:
+  home: https://github.com/raphidoc/sixs_json
+  license: GPL
+  summary: 'The 6S atmospheric radiative transfer model modified with JSON output and a python wrapper'
+
+extra:
+  recipe-maintainers:
+    - raphidoc

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sixs_json"
+version = "0.1.4.1"
+description = "The 6S atmospheric radiative transfer model modified with JSON output and a python wrapper"
+readme = "README.md"
+license = { text = "GPL" }
+authors = [
+    { name = "Raphael Mabit", email = "raphael.mabit@gmail.com" }
+]
+dependencies = []
+
+[tool.setuptools]
+packages = ["sixs_json"]
+#include_package_data = true
+
+#[tool.setuptools.package-data]
+#"sixs_json" = ["sixs_json/6sV2.1/sixsV2.1"]
+
+#[project.scripts]
+#run_fortran = "my_package.run_fortran:run_fortran_executable"
