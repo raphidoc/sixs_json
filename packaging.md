@@ -8,6 +8,8 @@ The goal is to have the package available on conda-forge for linux, osx and wind
 
 conda-forge take care of the packaging for linux, osx and windows so that we don´t have to (see [conda-forge](https://conda-forge.org/docs/user/introduction/)).
 
+What does the `posix` (https://anaconda.org/conda-forge/posix) package? It's include as a dependency in the recipe to avoid a CMake error.
+
 ## PyPi
 Build the package with the following command:
 

@@ -16,3 +16,7 @@ def test_run():
 
     assert isinstance(dict_res, dict)
     assert dict_res['6s_version'] == 2.1
+
+
+if __name__ == '__main__':
+    test_run()

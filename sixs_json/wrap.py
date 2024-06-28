@@ -328,9 +328,7 @@ class SixS:
                       + self.igroun
                       + self.irapp)
 
-        command = f'echo "{self.param}" | {self.sixs_path}'
-
-        process = subprocess.run(command, shell=True, capture_output=True)
+        process = subprocess.run(self.sixs_path, input=self.param, text=True, shell=True, capture_output=True)
 
         logging.debug(f"Subprocess exited with status {process.returncode}")
 
