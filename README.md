@@ -28,4 +28,4 @@ affiliated with:
 The original code can be found at: https://salsa.umd.edu/6spage.html
 
 A Python wrapper was developed by Robin Wilson and is available at: https://github.com/robintw/Py6S
-The Py6S package is great to discover 6S ([v1.1.3](https://github.com/robintw/6S)) and to run it in a simple way. It is, however, not optimized for speed.
+I´ve reused some of his code to compile 6s in a platform independent way and build on conda-forge.
