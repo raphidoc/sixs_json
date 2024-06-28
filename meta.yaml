@@ -1,6 +1,6 @@
 package:
   name: sixs_json
-  version: 0.1.4.62
+  version: 1.0.0
 
 source:
   path: .
