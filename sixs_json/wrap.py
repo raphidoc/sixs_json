@@ -3,17 +3,22 @@ import logging
 import subprocess
 import json
 
+
 class SixS:
 
-    def __init__(self):
+    def __init__(self, path = None):
         # Find the sixsV2.1 executable
-        package_dir = os.path.dirname(__file__)
-        rel_path = os.path.join('..', '6sV2.1', 'sixsV2.1')
-        abs_path = os.path.abspath(os.path.join(package_dir, rel_path))
+        # package_dir = os.path.dirname(__file__)
+        # rel_path = os.path.join('..', '6sV2.1', 'sixsV2.1')
+        # abs_path = os.path.abspath(os.path.join(package_dir, rel_path))
+
+        self.sixs_path = self._find_path(path) #abs_path
+
+        if not os.path.exists(self.sixs_path):
+            raise FileNotFoundError(f"6S executable not found at: {self.sixs_path}")
 
         # TODO: add test of 6S installation ?
 
-        self.sixs_path = abs_path
         logging.debug(f"Running 6S from: {self.sixs_path}")
 
         # TODO: use arbitrary arguments (*args) or keyword arguments (**kwargs)
@@ -33,6 +38,42 @@ class SixS:
 
         # Store the parameters in class attributes for outside access
         self.param = None
+
+    def _find_path(self, path=None):
+        """Finds the path of the 6S executable.
+
+        Arguments:
+
+        * ``path`` -- (Optional) The path to the 6S executable
+
+        Finds the 6S executable on the system, either using the given path or by searching the system PATH variable and the current directory
+
+        """
+        if path is not None:
+            return path
+        else:
+            return (
+                self._which("sixs.exe")
+                or self._which("sixs")
+                or self._which("sixsV1.1")
+                or self._which("sixsV1.1.exe")
+            )
+
+    def _which(self, program):
+        def is_exe(fpath):
+            return os.path.exists(fpath) and os.access(fpath, os.X_OK)
+
+        fpath, fname = os.path.split(program)
+        if fpath:
+            if is_exe(program):
+                return program
+        else:
+            for path in os.environ["PATH"].split(os.pathsep):
+                exe_file = os.path.join(path, program)
+                if is_exe(exe_file):
+                    return exe_file
+
+        return None
 
     def geometry(self, sun_zen, sun_azi, view_zen, view_azi, month, day):
         """
@@ -291,11 +332,26 @@ class SixS:
 
         process = subprocess.run(command, shell=True, capture_output=True)
 
-        breakpoint()
-
         logging.debug(f"Subprocess exited with status {process.returncode}")
 
         dict_res = json.loads(process.stdout)
+
+        return dict_res
+
+    def test(self):
+        """
+        Test function to check the implementation of the 6S wrapper
+        :return:
+        """
+        self.geometry(30, 260, 180, 30, 1, 1)
+        self.gas()
+        self.aerosol(0.04)
+        self.target_altitude()
+        self.sensor_altitude()
+        self.wavelength(445)
+        self.to_be_implemented()
+
+        dict_res = self.run()
 
         return dict_res
 

@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Navigate to the Fortran code directory
-cd 6sV2.1
+export FFLAGS=$(echo "${FFLAGS}" | sed "s/-fopenmp//g")
 
-# Use the Makefile to compile the Fortran code
-make
+cmake ${CMAKE_ARGS} -D CMAKE_INSTALL_PREFIX=$PREFIX $SRC_DIR
 
-## Navigate back to the root directory
-#cd ..
-#
-## Build the Python package
-#python -m build
+make -j${CPU_COUNT}
+make install
+
+$PYTHON -m pip install .

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sixs_json"
-version = "0.1.4.1"
+version = "0.1.4.62"
 description = "The 6S atmospheric radiative transfer model modified with JSON output and a python wrapper"
 readme = "README.md"
 license = { text = "GPL" }
