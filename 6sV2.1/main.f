@@ -2878,9 +2878,9 @@ c**********************************************************************c
        write(*, *)'"plane_pressure_[mb]":"',pps, '",'
        write(*, *)'"plane_altitude_[km]":"',zpl(34), '",'
 !      write(iwr, 181)
-       write(*, *)'"concentration_O3_[cm-atm]":"',puo3, '",'
-       write(*, *)'"concentration_H2O_[g cm-2]":"',puw, '",'
-       write(*, *)'"aot_550_[nm]":"',taer55p, '",'
+       write(*, *)'"concentration_O3_plane_[cm-atm]":"',puo3, '",'
+       write(*, *)'"concentration_H2O_plane_[g cm-2]":"',puw, '",'
+       write(*, *)'"aot_550_plane_[nm]":"',taer55p, '",'
       endif
 !
 ! ---- atmospheric correction  ----
